@@ -28,7 +28,9 @@ export default function Home({ joke }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch("https://icanhazdadjoke.com/");
+  const res = await fetch("https://icanhazdadjoke.com/", {
+    headers: { Accept: "application/json" },
+  });
   if (!res.ok) {
     return {
       props: {
