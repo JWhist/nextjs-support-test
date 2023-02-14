@@ -31,6 +31,15 @@ export async function getStaticProps() {
   const res = await fetch(
     "https://tranquil-youtiao-b5df2a.netlify.app/api/joke"
   );
+  if (!res.ok) {
+    return {
+      props: {
+        joke: "No joke for you.",
+      },
+      revalidate: 60,
+    };
+  }
+
   const joke = await res.json();
 
   return {
