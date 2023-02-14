@@ -28,7 +28,9 @@ export default function Home({ joke }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch("/api/joke");
+  const res = await fetch(
+    "https://tranquil-youtiao-b5df2a.netlify.app/api/joke"
+  );
   const joke = await res.json();
 
   return {
