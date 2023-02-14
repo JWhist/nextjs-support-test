@@ -4,7 +4,7 @@ import Footer from "@components/Footer";
 import FeedbackForm from "@components/FeedbackForm";
 import JokeBlock from "@components/JokeBlock";
 
-export default function Home() {
+export default function Home({ joke }) {
   return (
     <div className="container">
       <Head>
@@ -20,9 +20,21 @@ export default function Home() {
           submissions can be found in the Netlify Admin site.
         </p>
         <FeedbackForm />
-        <JokeBlock />
+        <JokeBlock joke={joke} />
       </main>
       <Footer />
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const res = await fetch("/api/joke");
+  const joke = await res.json();
+
+  return {
+    props: {
+      joke,
+    },
+    revalidate: 60,
+  };
 }
