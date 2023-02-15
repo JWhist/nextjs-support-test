@@ -1,3 +1,5 @@
+import JokeBlock from "../components/JokeBlock";
+
 export default function Joke({ joke, status }) {
   return (
     <div>
