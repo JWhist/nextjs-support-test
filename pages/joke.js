@@ -11,7 +11,7 @@ export async function getStaticProps() {
   const res = await fetch("https://icanhazdadjoke.com/", {
     headers: { Accept: "application/json", UserAgent: "testing-Netlify" },
   });
-  const res2 = await fetch("/");
+  const res2 = await fetch("https://tranquil-youtiao-b5df2a.netlify.app/");
   if (!res.ok) {
     return {
       props: {
